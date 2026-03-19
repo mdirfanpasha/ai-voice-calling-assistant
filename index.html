@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Call Me</h2>
+
+<input id="phone" placeholder="+91XXXXXXXXXX">
+<button onclick="call()">Call</button>
+
+<script>
+function call() {
+    const phone = document.getElementById("phone").value;
+
+    fetch("http://localhost:3000/call", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ phone: phone })
+    })
+    .then(res => res.text())
+    .then(data => alert(data));
+}
+</script>
+
+</body>
+</html>
